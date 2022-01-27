@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/CMU-17-356/dronuts2022-group_1_spring_2022/issues"
   },
-  "homepage": "https://github.com/CMU-17-356/dronuts2022-group_1_spring_2022#readme"
+  "homepage": "https://github.com/CMU-17-356/dronuts2022-group_1_spring_2022#readme",
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-watch": "^8.0.0"
+  }
 }

@@ -44,6 +44,14 @@ As a deliverable of sprint 0, you will be asked to compare these frameworks. You
 should familiarize yourself with both projects in order to justify your decision.
 Once the decision is made, install it in your groups repository.
 
+### QA/Helpful Tools We Have Set up 
+
+* <b>Eslint</b> is the linter our group uses. We use it to automatically lint our code through the eslint plugin for vscode, and we additionally configured github-action to run the linter as a step of the CI process for every commit. 
+
+* <b>JEST</b> is out testing framework, and we configured github-actions to run our tests located in the "test/" directory for every commit as a step of the CI process. 
+
+* <b>npm-check</b> is the tool we use for detecting dependency updates. As it is meant to be installed globally through npm, we didn't include it in package.json
+
 ### QA/Helpful Tools
 1. You should install a linter for your repository, to help manage code style.
 We highly recommend [eslint](https://eslint.org/docs/user-guide/getting-started)

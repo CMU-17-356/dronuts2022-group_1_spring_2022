@@ -1,7 +1,7 @@
 name: Dronut CI
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Dronut Test and Lint:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -16,6 +16,8 @@ jobs:
           ls ${{ github.workspace }}
       - name: Install modules
         run: yarn
+      - name: Run Eslint
+        run: yarn run eslint src test
       - name: Run tests
         run: yarn test
       - run: echo "🍏 This job's status is ${{ job.status }}."

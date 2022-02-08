@@ -18,9 +18,15 @@
   },
   "homepage": "https://github.com/CMU-17-356/dronuts2022-group_1_spring_2022#readme",
   "devDependencies": {
-    "eslint": "^8.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "express": "^4.17.2",
     "jest": "^27.4.7"
   }

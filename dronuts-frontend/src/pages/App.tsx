@@ -10,10 +10,10 @@ function App() {
           <Link to="/menu">Menu</Link>
         </p>
         <p>
-          <Link to="/Cart">Cart</Link>
+          <Link to="/cart">Cart</Link>
         </p>
         <p>
-          <Link to="/Cart">Order</Link>
+          <Link to="/order">Order</Link>
         </p>
       </header>
     </div>

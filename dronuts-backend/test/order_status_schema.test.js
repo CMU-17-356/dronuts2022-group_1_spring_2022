@@ -1,4 +1,4 @@
-const OrderStatus = require('../src/dronuts-backend/order_status_schema');
+const OrderStatus = require('../src/order_status_schema');
 const expect = require('chai').expect;
 
 describe('Onder Status', function() {
@@ -10,7 +10,7 @@ describe('Onder Status', function() {
         });
     });
 
-    it('order status should always contain a customer id', function(done) {
+    it('order status should always contain a drone id', function(done) {
         m = new OrderStatus();
         m.validate(function(err) {
             expect(err.errors.droneId).to.exist;

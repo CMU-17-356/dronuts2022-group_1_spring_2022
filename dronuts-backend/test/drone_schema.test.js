@@ -1,4 +1,4 @@
-const Drone = require('../src/dronuts-backend/drone_schema.js');
+const Drone = require('../src/drone_schema.js');
 const expect = require('chai').expect;
 
 describe('Drone', function() {

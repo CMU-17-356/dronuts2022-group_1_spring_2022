@@ -1,4 +1,4 @@
-const ShopOrder = require('../src/dronuts-backend/order_schema.js');
+const ShopOrder = require('../src/order_schema.js');
 const expect = require('chai').expect;
 
 describe('Order', function() {

@@ -13,7 +13,9 @@ We've decided to use <b>Express</b> as our web framework, for these reasons:
 
 * <b>Eslint</b> is the linter our group uses. We use it to automatically lint our code through the eslint plugin for vscode, and we additionally configured github-action to run the linter as a step of the CI process for every commit. 
 
-* <b>JEST</b> is out testing framework, and we configured github-actions to run our tests located in the "test/" directory for every commit as a step of the CI process. 
+* <b>Mocha</b> is our backend testing framework, and we configured github-actions to run our tests located in the "dronuts-backend/test/" directory for every commit as a step of the CI process. 
+
+* <b>Chai</b> is used to validate backend object data models.
 
 * <b>npm-check</b> is the tool we use for detecting dependency updates. As it is meant to be installed globally through npm, we didn't include it in package.json
 

@@ -4,7 +4,7 @@
   "description": "dronuts project for group 1 spring 2022",
   "main": "index.js",
   "scripts": {
-    "test": "mocha /test/schema",
+    "test": "mocha ./test/schema",
     "lint": "eslint src test"
   },
   "repository": {

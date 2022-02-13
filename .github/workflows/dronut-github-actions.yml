@@ -21,6 +21,6 @@ jobs:
         working-directory: ./dronuts-backend
         run: yarn lint
       - name: "Backend: Run tests"
-        working-directory: ./dronuts-backend
+        working-directory: ./dronuts-backend/test/schema
         run: yarn test
       - run: echo "🍏 This job's status is ${{ job.status }}."

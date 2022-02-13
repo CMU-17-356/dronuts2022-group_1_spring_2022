@@ -4,8 +4,8 @@
   "description": "dronuts project for group 1 spring 2022",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "lint": "esw -w test"
+    "test": "mocha",
+    "lint": "eslint src test"
   },
   "repository": {
     "type": "git",

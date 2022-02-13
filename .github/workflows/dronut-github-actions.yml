@@ -14,10 +14,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Install modules
+      - name: "Backend: Install modules"
+        working-directory: ./dronuts-backend
         run: yarn
-      - name: Run Eslint
-        run: yarn run eslint src test
-      - name: Run tests
+      - name: "Backend: Run linter"
+        working-directory: ./dronuts-backend
+        run: yarn lint
+      - name: "Backend: Run tests"
+        working-directory: ./dronuts-backend
         run: yarn test
       - run: echo "🍏 This job's status is ${{ job.status }}."

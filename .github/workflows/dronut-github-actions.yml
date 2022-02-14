@@ -17,6 +17,9 @@ jobs:
       - name: "Backend: Install modules"
         working-directory: ./dronuts-backend
         run: yarn
+      - name: "Backend: Compile Typescript Files"
+        working-directory: ./dronuts-backend
+        run: tsc -p tsconfig.json
       - name: "Backend: Run linter"
         working-directory: ./dronuts-backend
         run: yarn lint

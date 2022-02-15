@@ -1,6 +1,7 @@
 .pageContent {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   padding-left: 5vw;
   padding-right: 5vw;
   padding-top: 80.5px;
@@ -17,7 +18,12 @@
 }
 
 .sidebar {
-  width: 30%;
+  position: fixed;
+  right: 0;
+  width: 22%;
   border-left: 1px solid #ddd;
-  text-align: center;
+  text-align: left;
+  height: 100%;
+  padding: 24px;
+  padding-right: 5vw;
 }

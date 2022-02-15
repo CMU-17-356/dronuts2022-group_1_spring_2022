@@ -8,13 +8,22 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 interface MenuItemProps {
   name: string;
   description: string;
-  setCart: unknown;
+  setCart: any;
+  cart: object;
 }
 
 function MenuItem(props: MenuItemProps) {
-  const { name, description } = props;
+  const { name, description, cart, setCart } = props;
 
   const [quantity, setQuantity] = useState(0);
+
+  function handleChange(n: number) {
+    setQuantity(Math.max(0, n));
+    setCart({
+      ...cart,
+      [name]: Math.max(0, n)
+    });
+  }
 
   return (
     <div className="MenuItem">
@@ -26,13 +35,13 @@ function MenuItem(props: MenuItemProps) {
             <div className="quantityRow">
               <IconButton
                 className="iconButton"
-                onClick={() => setQuantity(Math.max(0,quantity + 1))}
+                onClick={() => handleChange(quantity + 1)}
               >
                 <AddCircleIcon className="icon" />
               </IconButton>
               <IconButton
                 className="iconButton"
-                onClick={() => setQuantity(Math.max(0, quantity - 1))}
+                onClick={() => handleChange(quantity - 1)}
               >
                 <RemoveCircleIcon className="icon" />
               </IconButton>
@@ -43,7 +52,7 @@ function MenuItem(props: MenuItemProps) {
                 className="text"
                 value={quantity}
                 onChange={(event) => {
-                  setQuantity(Math.max(0, parseInt(event.target.value)));
+                  handleChange(parseInt(event.target.value));
                 }}
               />
             </div>

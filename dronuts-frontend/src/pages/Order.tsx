@@ -1,11 +1,11 @@
-import React from 'react';
+// From the Material UI docs
+
+import React from "react";
+import Checkout from "../components/Checkout";
+import "./Order.css";
 
 function App() {
-  return (
-    <div className="App">
-      Order Confirmation Page!
-    </div>
-  );
+  return <Checkout />;
 }
 
 export default App;

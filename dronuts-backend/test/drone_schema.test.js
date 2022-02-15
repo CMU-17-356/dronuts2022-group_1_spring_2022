@@ -1,10 +1,14 @@
-const Drone = require('../src/drone_schema.js');
-const expect = require('chai').expect;
-
-describe('Drone', function() {
-    it('drones should always contain an id', function(done) {
-        m = new Drone();
-        m.validate(function(err) {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var drone_schema_js_1 = __importDefault(require("../src/drone_schema.js"));
+var expect = require('chai').expect;
+describe('Drone', function () {
+    it('drones should always contain an id', function (done) {
+        var m = new drone_schema_js_1.default();
+        m.validate(function (err) {
             expect(err.errors.id).to.exist;
             done();
         });

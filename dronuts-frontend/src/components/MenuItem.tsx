@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MenuItem.css";
-import { Card, CardContent, IconButton, TextField } from "@mui/material";
+import { Card, CardContent, IconButton, TextField, Typography } from "@mui/material";
 import DonutPic from "../assets/apple_krumb.jpeg";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -30,8 +30,8 @@ function MenuItem(props: MenuItemProps) {
       <Card variant="outlined">
         <CardContent className="cardContent">
           <div className="info">
-            <div>{name}</div>
-            <div>{description}</div>
+            <Typography variant="body1">{name}</Typography>
+            <Typography variant="body2">{description}</Typography>
             <div className="quantityRow">
               <IconButton
                 className="iconButton"

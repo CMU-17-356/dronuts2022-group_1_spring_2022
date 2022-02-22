@@ -10,6 +10,7 @@ import App from './pages/App';
 import CartPage from './pages/Cart';
 import MenuPage from './pages/Menu';
 import OrderPage from './pages/Order';
+import EmployeePage from './pages/Employee'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="menu" element={<MenuPage />} />
       <Route path="cart" element={<CartPage />} />
       <Route path="order" element={<OrderPage />} />
+      <Route path="employee" element={<EmployeePage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

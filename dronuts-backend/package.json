@@ -4,7 +4,7 @@
   "description": "dronuts project for group 1 spring 2022",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --recursive",
     "lint": "eslint src test  --ext .ts"
   },
   "repository": {

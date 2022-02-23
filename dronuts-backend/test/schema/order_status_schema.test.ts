@@ -1,4 +1,4 @@
-import OrderStatus from '../src/order_status_schema';
+import OrderStatus from '../../src/schema/order_status_schema';
 const expect = require('chai').expect;
 
 describe('Order Status', function() {

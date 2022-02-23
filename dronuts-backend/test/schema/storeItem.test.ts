@@ -1,4 +1,4 @@
-import StoreItem from '../src/storeItem_schema';
+import StoreItem from '../../src/schema/storeItem_schema';
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 

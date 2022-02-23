@@ -1,4 +1,4 @@
-import Customer from '../src/customer_schema';
+import Customer from '../../src/schema/customer_schema';
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 

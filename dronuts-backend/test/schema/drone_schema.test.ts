@@ -1,4 +1,4 @@
-import Drone from '../src/drone_schema.js';
+import Drone from '../../src/schema/drone_schema';
 const expect = require('chai').expect;
 
 describe('Drone', function() {

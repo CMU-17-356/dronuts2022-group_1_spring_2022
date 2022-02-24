@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Payload.css";
-import { Card, CardContent, IconButton, TextField, Typography } from "@mui/material";
-import DonutPic from "../assets/apple_krumb.jpeg";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Card, CardContent, Typography } from "@mui/material";
 
 interface PayloadProps {
   id: number;
+  droneId: number;
   items: {name: string, quantity: number}[];
 }
 
 function Payload(props: PayloadProps) {
-  const { id, items } = props;
+  const { id, droneId, items } = props;
 
   return (
-    <div className="MenuItem">
+    <div className="Payload">
       <Card variant="outlined">
         <CardContent className="cardContent">
           <div className="info">
-            <Typography variant="body1">Order {id}</Typography>
+            <Typography variant="h6">Order #{id}</Typography>
             {items.map((item) => {
               return (
                 <div className="cartRow" key={item.name}>
@@ -32,34 +30,11 @@ function Payload(props: PayloadProps) {
                 </div>
               );
             })}
-            {/* <div className="quantityRow">
-              <IconButton
-                className="iconButton"
-                onClick={() => handleChange(quantity + 1)}
-              >
-                <AddCircleIcon className="icon" />
-              </IconButton>
-              <IconButton
-                className="iconButton"
-                onClick={() => handleChange(quantity - 1)}
-              >
-                <RemoveCircleIcon className="icon" />
-              </IconButton>
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                type="number"
-                className="text"
-                value={quantity}
-                onChange={(event) => {
-                  handleChange(parseInt(event.target.value));
-                }}
-              />
-            </div> */}
           </div>
-          {/* <div className="pic">
-            <img src={DonutPic} />
-          </div> */}
+          <div className="assignedDrone">
+            <Typography variant="body1">Load To</Typography>
+            <Typography variant="h3">D{droneId}</Typography>
+          </div>
         </CardContent>
       </Card>
     </div>

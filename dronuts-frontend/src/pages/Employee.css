@@ -7,17 +7,17 @@
     text-align: left;
   }
   
-  .menuHeader {
+  .payloadHeader {
     width: 100%;
     padding-bottom: 12px;
   }
   
-  .menuGrid {
+  .payloadList {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 70%;
+    width: 100%;
     padding-right: 20px;
     padding-top: 20px;
   }

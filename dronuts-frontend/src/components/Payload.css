@@ -1,8 +1,8 @@
-.MenuItem {
+.Payload {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     margin-bottom: 12px;
   }
   
@@ -18,26 +18,8 @@
     width: 70%
   }
   
-  .pic {
+  .assignedDrone {
     width: 30%;
     align-items: center;
+    text-align: center;
   }
-  
-  .cardContent img {
-    flex-shrink: 0;
-    width: 100%
-  }
-  
-  
-  .quantityRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 12px;
-  }
-  
-  .text {
-    padding: 8px;
-    width: 50%;
-  }
-  

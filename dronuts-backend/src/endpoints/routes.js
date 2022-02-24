@@ -8,10 +8,9 @@ const hostname = '127.0.0.1';
 
 app.use(bodyParser.json());
 
-app.post('/order', (request, response) => {
-    console.log(request.body);
-    persistOrder(request.body);
-    response.send('Hi!');
+app.post('/order', async (request, response) => {
+    const success = await persistOrder(request.body);
+    response.send(success ? 'Order Placed' : 'Validation Error');
 });
 
 app.listen(port, hostname, () => {

@@ -7,15 +7,13 @@ async function persistOrder(requestBody) {
     client.connect(async function(err, client) {
         const collection = client.db('dronuts').collection('Order');
         const num_orders = await collection.countDocuments();
-        console.log();
         requestBody.id = num_orders + 1;
-        console.log(requestBody);
         try {
             const new_order = new order_schema(requestBody);
             new_order.validate();
 
             collection.insertOne(new_order, function() {
-                await client.close();
+                client.close();
             });
         } catch (error) {
             console.log(error);

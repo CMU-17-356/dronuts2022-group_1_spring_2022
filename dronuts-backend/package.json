@@ -4,7 +4,7 @@
   "description": "dronuts project for group 1 spring 2022",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "mocha --recursive --exit",
     "lint": "eslint src test  --ext .ts"
   },
   "repository": {
@@ -36,6 +36,7 @@
   "dependencies": {
     "@types/chai": "^4.3.0",
     "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "mongoose": "^6.2.1"
   }
 }

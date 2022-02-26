@@ -4,6 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import orderSummary from '../assets/orderSummary';
 
 const products = [
   {
@@ -43,16 +44,19 @@ export default function Review() {
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
+        {Object.keys(orderSummary).map((key) => {
+            const product = orderSummary[key as keyof typeof orderSummary];
+            return (
+              <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
+                <ListItemText primary={product.name} />
+                <Typography variant="body2">{product.price}</Typography>
+              </ListItem>
+            );
+          })}
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+            $4.25
           </Typography>
         </ListItem>
       </List>

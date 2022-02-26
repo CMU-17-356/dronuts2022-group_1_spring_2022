@@ -84,7 +84,8 @@ export default function Checkout() {
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order
-                  confirmation, and you can track the status of your order below.
+                  confirmation, and your order should arrive to 5000 Forbes Ave, 
+                  Pittsburgh, PA 15213, USA in 15-20 minutes.
                 </Typography>
               </React.Fragment>
             ) : (

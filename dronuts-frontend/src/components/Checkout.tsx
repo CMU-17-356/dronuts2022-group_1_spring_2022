@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import Header from "../components/Header";
 
 function Copyright() {
   return (
@@ -60,21 +61,8 @@ export default function Checkout() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: 'relative',
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Dronuts
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header />
+      <div className="pageContent">
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
@@ -95,8 +83,7 @@ export default function Checkout() {
                 </Typography>
                 <Typography variant="subtitle1">
                   Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  confirmation, and you can track the status of your order below.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -122,6 +109,7 @@ export default function Checkout() {
         </Paper>
         <Copyright />
       </Container>
+      </div>
     </ThemeProvider>
   );
 }

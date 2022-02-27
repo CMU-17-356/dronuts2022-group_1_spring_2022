@@ -1,4 +1,4 @@
-import ShopOrder from '../src/order_schema.js';
+import ShopOrder from '../../src/schema/order_schema';
 const expect = require('chai').expect;
 
 describe('Order', function() {

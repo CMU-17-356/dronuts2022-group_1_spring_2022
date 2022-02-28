@@ -4,7 +4,7 @@ const {persistOrder, getOrders} = require('./order_routes');
 const {startDatabase} = require('../db/db');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 const hostname = '127.0.0.1';
 
 app.use(bodyParser.json());

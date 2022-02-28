@@ -8,44 +8,11 @@ import { useEffect, useState } from "react";
 interface Order {
   id: number, 
   customerId: number, 
-  items: {itemId: number, count: number}[],
+  items: {itemId: number, quantity: number}[],
   address: string,
 }
 
 function App() {
-  const testPayloads = [
-    {
-      id: 1, 
-      customerId: 12, 
-      items: [
-        {itemId: 1, count: 3},
-        {itemId: 2, count: 1},
-        {itemId: 3, count: 1},
-        {itemId: 4, count: 1}
-      ],
-      address: "5000 Forbes Ave."
-    },
-    {
-      id: 2,
-      customerId: 14,
-      items: [
-        {itemId: 1, count: 1},
-        {itemId: 3, count: 1},
-        {itemId: 5, count: 1},
-      ],
-      address: "1 infinite loop."
-    },
-    {
-      id: 3, 
-      customerId: 20, 
-      items: [
-        {itemId: 1, count: 2},
-        {itemId: 8, count: 1},
-        {itemId: 9, count: 2},
-      ],
-      address: "1000 Morewood Ave."
-    }
-  ]
 
   const [orders, setOrders] = useState<Array<Order>>([]);
 
@@ -62,12 +29,12 @@ function App() {
     fetchOrders();
   }, []);
 
-  function getItems(ids: {itemId: number, count: number}[]) {
+  function getItems(ids: {itemId: number, quantity: number}[]) {
     return ids.map((object) => {
       return (
         {
           name: menuList[object.itemId].name,
-          quantity: object.count
+          quantity: object.quantity
         }
       )
     })

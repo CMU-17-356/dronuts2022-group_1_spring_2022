@@ -1,26 +1,27 @@
 const {startDatabase} = require('../db/db');
 const {default: order_schema} = require('../schema/order_schema');
+const { persistOrderStatus } = require('./order_status_routes');
 
-async function persistOrder(requestBody) {
+async function persistOrder(requestBody, response) {
     const client = startDatabase();
-
     client.connect(async function(err, client) {
         const collection = client.db('dronuts').collection('Order');
         const num_orders = await collection.countDocuments();
-        requestBody.id = num_orders + 1;
+        const orderId = num_orders + 1;
+        requestBody.id = orderId;
         try {
             const new_order = new order_schema(requestBody);
             new_order.validate();
-
             collection.insertOne(new_order, function() {
                 client.close();
             });
+            persistOrderStatus(orderId);
+            
         } catch (error) {
             console.log(error);
-            return [false, 0];
         }
     });
-    return [true, requestBody.id];
+   
 }
 
 function getOrders(response) {

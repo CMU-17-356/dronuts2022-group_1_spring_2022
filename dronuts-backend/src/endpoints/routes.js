@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {persistOrder, getOrders} = require('./order_routes');
+const {updateOrderStatus} = require('./order_status_routes');
 
 const app = express();
 const port = 3000;
@@ -15,6 +16,12 @@ app.post('/order', async (request, response) => {
 
 app.get('/order', (request, response) => {
     getOrders(response);
+});
+
+app.patch('/orderstatus', (request, response) => {
+    // Validate Status
+    updateOrderStatus(request.body.orderId, request.body.status);
+    response.status(200).send('OrderStatus updated');
 });
 
 app.listen(port, hostname, () => {

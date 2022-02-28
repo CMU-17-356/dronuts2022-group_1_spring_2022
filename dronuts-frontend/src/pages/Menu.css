@@ -48,3 +48,11 @@
   justify-content: space-between;
   margin-bottom: 6px;
 }
+
+.delivery {
+  margin-bottom: 12px;
+}
+
+.checkout {
+  margin-top: 12px;
+}

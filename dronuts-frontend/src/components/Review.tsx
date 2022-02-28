@@ -33,14 +33,14 @@ export default function Review() {
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $4.25
+            $6.25
           </Typography>
         </ListItem>
       </List>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Shipping
+            Delivery
           </Typography>
           <Typography gutterBottom>Michael Hilton</Typography>
           <Typography gutterBottom>{addresses.join(', ')}</Typography>

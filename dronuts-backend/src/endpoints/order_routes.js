@@ -17,10 +17,10 @@ async function persistOrder(requestBody) {
             });
         } catch (error) {
             console.log(error);
-            return false;
+            return [false, 0];
         }
     });
-    return true;
+    return [true, requestBody.id];
 }
 
 exports.persistOrder = persistOrder;

@@ -9,7 +9,8 @@ const hostname = '127.0.0.1';
 app.use(bodyParser.json());
 
 app.post('/order', async (request, response) => {
-    const success = await persistOrder(request.body);
+    const [success, orderId] = await persistOrder(request.body);
+    console.log(orderId);
     response.send(success ? 'Order Placed' : 'Validation Error');
 });
 

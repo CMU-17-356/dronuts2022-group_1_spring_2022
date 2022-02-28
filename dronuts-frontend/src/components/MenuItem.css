@@ -23,6 +23,10 @@
   align-items: center;
 }
 
+img {
+  border-radius: 5px;
+}
+
 .cardContent img {
   flex-shrink: 0;
   width: 100%

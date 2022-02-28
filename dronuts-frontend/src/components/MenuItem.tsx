@@ -1,27 +1,38 @@
 import React, { useState } from "react";
 import "./MenuItem.css";
-import { Card, CardContent, IconButton, TextField, Typography } from "@mui/material";
-import DonutPic from "../assets/apple_krumb.jpeg";
+import {
+  Card,
+  CardContent,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 interface MenuItemProps {
   name: string;
-  description: string;
-  setCart: any;
+  price: number;
+  setCart: React.Dispatch<React.SetStateAction<any>>;
   cart: object;
+  image: any;
 }
 
 function MenuItem(props: MenuItemProps) {
-  const { name, description, cart, setCart } = props;
+  const { name, price, cart, setCart, image } = props;
 
   const [quantity, setQuantity] = useState(0);
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   function handleChange(n: number) {
     setQuantity(Math.max(0, n));
     setCart({
       ...cart,
-      [name]: Math.max(0, n)
+      [name]: Math.max(0, n),
     });
   }
 
@@ -31,7 +42,7 @@ function MenuItem(props: MenuItemProps) {
         <CardContent className="cardContent">
           <div className="info">
             <Typography variant="body1">{name}</Typography>
-            <Typography variant="body2">{description}</Typography>
+            <Typography variant="body2">{formatter.format(price)} each</Typography>
             <div className="quantityRow">
               <IconButton
                 className="iconButton"
@@ -58,7 +69,7 @@ function MenuItem(props: MenuItemProps) {
             </div>
           </div>
           <div className="pic">
-            <img src={DonutPic} />
+            <img src={image} />
           </div>
         </CardContent>
       </Card>

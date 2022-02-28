@@ -1,69 +1,20 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import React, { useState } from "react";
 import Header from "../components/Header";
 import MenuItem from "../components/MenuItem";
 import { Typography } from "@mui/material";
+import Menu from "../assets/menu";
 import "./Menu.css";
 
 function App() {
   const [cart, setCart] = useState([]);
 
-  const testMenu = [
-    {
-      name: "Glazed",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "Sprinkles",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "Apple Fritter",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "Cinamon Roll",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed5",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed6",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed7",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed8",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed9",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed10",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-    {
-      name: "glazed11",
-      description: "A classic glazed donut with sprinkles",
-      cost: 1.5,
-    },
-  ];
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   return (
     <div className="App">
@@ -73,35 +24,53 @@ function App() {
           <Typography variant="h4" className="menuHeader">
             Classic Donuts
           </Typography>
-          {testMenu.map((object) => {
-            return (
-              <MenuItem
-                name={object.name}
-                description={object.description}
-                cart={cart}
-                setCart={setCart}
-                key={object.name}
-              />
-            );
+          {Object.keys(Menu).map((key) => {
+            const item = Menu[key];
+            if (item.classic) {
+              return (
+                <MenuItem
+                  name={item.name}
+                  price={item.price}
+                  image={item.pic}
+                  cart={cart}
+                  setCart={setCart}
+                  key={item.name}
+                />
+              );
+            }
+          })}
+          <Typography variant="h4" className="menuHeader">
+            Specialty Donuts
+          </Typography>
+          {Object.keys(Menu).map((key) => {
+            const item = Menu[key];
+            if (!item.classic) {
+              return (
+                <MenuItem
+                  name={item.name}
+                  price={item.price}
+                  image={item.pic}
+                  cart={cart}
+                  setCart={setCart}
+                  key={item.name}
+                />
+              );
+            }
           })}
         </div>
         <div className="sidebar">
           <div>
-            <Typography variant="h5">
-              Shopping Cart
-            </Typography>
+            <Typography variant="h5">Shopping Cart</Typography>
             <div className="cartContainer">
               {Object.keys(cart).map((key, i) => {
                 const quantity = Object.values(cart)[i];
                 if (quantity > 0)
                   return (
                     <div className="cartRow" key={key}>
-                      <Typography variant="body1">
-                        {key}
-                      </Typography>
+                      <Typography variant="body1">{key}</Typography>
                       <div className="dash" />
                       <Typography variant="body1">
-                        {quantity} x $1.5
+                        {quantity} x {formatter.format(Menu[key].price)}
                       </Typography>
                     </div>
                   );
@@ -111,13 +80,9 @@ function App() {
           <div className="cartFooter">
             {cart.length > 0 && (
               <div className="cartRow">
-                <Typography variant="body1">
-                  Total
-                </Typography>
+                <Typography variant="body1">Total</Typography>
                 <div className="dash" />
-                <Typography variant="body1">
-                  $6.00
-                </Typography>
+                <Typography variant="body1">$6.00</Typography>
               </div>
             )}
           </div>

@@ -2,23 +2,37 @@
 // @ts-nocheck
 
 import React, { useState } from "react";
-import Header from "../components/Header";
+import MenuHeader from "../components/MenuHeader";
 import MenuItem from "../components/MenuItem";
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import Menu from "../assets/menu";
+import { Link } from "react-router-dom";
 import "./Menu.css";
 
 function App() {
   const [cart, setCart] = useState([]);
+
+  const [address, setAddress] = useState("");
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
+  function calculateTotal() {
+    let total = 0;
+    Object.keys(cart).map((key, i) => {
+      const quantity = Object.values(cart)[i];
+      total += quantity * Menu[key].price;
+    });
+    return total;
+  }
+
+  const deliveryTime = 10 + Math.floor(Math.random() * 10);
+
   return (
     <div className="App">
-      <Header />
+      <MenuHeader setAddress={setAddress} />
       <div className="pageContent">
         <div className="menuGrid">
           <Typography variant="h4" className="menuHeader">
@@ -78,11 +92,34 @@ function App() {
             </div>
           </div>
           <div className="cartFooter">
-            {cart.length > 0 && (
-              <div className="cartRow">
-                <Typography variant="body1">Total</Typography>
-                <div className="dash" />
-                <Typography variant="body1">$6.00</Typography>
+            <div className="delivery">
+              {address ? (
+                <Typography variant="body1">
+                  ETA to {address}: {deliveryTime} Minutes
+                </Typography>
+              ) : (
+                <Typography variant="body1">
+                  Enter an address for an ETA
+                </Typography>
+              )}
+            </div>
+            <div className="cartRow">
+              <Typography variant="body1">Delivery</Typography>
+              <div className="dash" />
+              <Typography variant="body1">{formatter.format(1.5)}</Typography>
+            </div>
+            <div className="cartRow">
+              <Typography variant="body1">Total</Typography>
+              <div className="dash" />
+              <Typography variant="body1">
+                {formatter.format(calculateTotal() + 1.5)}
+              </Typography>
+            </div>
+            {Object.keys(cart).length > 0 && address && (
+              <div className="checkout">
+                <Link to="/order" state={{ cart: cart, address: address }}>
+                  <Button variant="contained">Continue to Checkout</Button>
+                </Link>
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {persistOrder} = require('./order_routes');
+const {persistOrder, getOrders} = require('./order_routes');
 const {startDatabase} = require('../db/db');
 
 const app = express();
@@ -15,16 +15,7 @@ app.post('/order', async (request, response) => {
 });
 
 app.get('/order', (request, response) => {
-    const client = startDatabase();
-    client.connect(function(err, db) {
-        if (err) throw err;
-        const dbo = db.db('dronuts');
-        dbo.collection('Order').find({}).toArray(function(err, result) {
-            if (err) throw err;
-            response.status(200).send(result);
-            db.close();
-        });
-    });
+    getOrders(response);
 });
 
 app.listen(port, hostname, () => {

@@ -15,9 +15,9 @@ const orderSummary = {
     name: 'Boston Kreme',
     price: '$1.25',
   },
-  "Shipping": { 
-    name: 'Shipping', 
-    price: 'Free' 
+  "Delivery": { 
+    name: 'Delivery', 
+    price: '$1.50' 
   },
 };
 

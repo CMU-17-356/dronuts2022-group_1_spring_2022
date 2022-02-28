@@ -23,4 +23,18 @@ async function persistOrder(requestBody) {
     return true;
 }
 
+function getOrders(response) {
+    const client = startDatabase();
+    client.connect(function(err, db) {
+        if (err) throw err;
+        const dbo = db.db('dronuts');
+        dbo.collection('Order').find({}).toArray(function(err, result) {
+            if (err) throw err;
+            response.status(200).send(result);
+            db.close();
+        });
+    });
+}
+
 exports.persistOrder = persistOrder;
+exports.getOrders = getOrders;

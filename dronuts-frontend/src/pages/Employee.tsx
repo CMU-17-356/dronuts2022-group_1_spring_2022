@@ -3,6 +3,14 @@ import { Typography } from "@mui/material";
 import "./Employee.css";
 import Payload from "../components/Payload";
 import menuList from "../assets/menuList";
+import { useEffect, useState } from "react";
+
+interface Order {
+  id: number, 
+  customerId: number, 
+  items: {itemId: number, count: number}[],
+  address: string,
+}
 
 function App() {
   const testPayloads = [
@@ -39,6 +47,21 @@ function App() {
     }
   ]
 
+  const [orders, setOrders] = useState<Array<Order>>([]);
+
+  async function fetchOrders() {
+    try {
+      const response = await fetch('/order').then((res) => (res.json()));
+      setOrders(response);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
   function getItems(ids: {itemId: number, count: number}[]) {
     return ids.map((object) => {
       return (
@@ -60,7 +83,7 @@ function App() {
           <Typography variant="h4" className="payloadHeader">
             Payloads
           </Typography>
-          {testPayloads.map((object, index) => {
+          {orders.map((object, index) => {
             return (
               <Payload
                 id={object.id}

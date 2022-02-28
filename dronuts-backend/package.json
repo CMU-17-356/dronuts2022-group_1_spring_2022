@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive --exit",
-    "lint": "eslint src test  --ext .ts"
+    "lint": "eslint src test  --ext .ts",
+    "start": "node src/endpoints/routes.js"
   },
   "repository": {
     "type": "git",

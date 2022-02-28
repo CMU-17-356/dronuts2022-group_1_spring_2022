@@ -6,7 +6,7 @@ const orderSchema = new Schema({
     customerId: {type: Number, required: true},
     items: {
         type: [Number],
-        validate: function(v: [Number]) {
+        validate: function(v: [Number, Number]) {
             return v !== undefined && v.length > 0;
         },
     },

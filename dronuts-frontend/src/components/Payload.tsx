@@ -25,7 +25,7 @@ function Payload(props: PayloadProps) {
                   </Typography>
                   <div className="dash" />
                   <Typography variant="body1">
-                    {item.quantity} x $1.5
+                    x {item.quantity}
                   </Typography>
                 </div>
               );

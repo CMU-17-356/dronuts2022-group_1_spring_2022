@@ -5,19 +5,19 @@ const orderSummary = {
   },
   "Bavarian Kreme": {
     name: 'Bavarian Kreme',
-    price: '$1.25',
+    price: '$2.50',
   },
   "Blueberry": {
     name: 'Blueberry',
-    price: '$1.00',
+    price: '$3.00',
   },
   "Boston Kreme": {
     name: 'Boston Kreme',
     price: '$1.25',
   },
-  "Shipping": { 
+  "Delivery": { 
     name: 'Shipping', 
-    price: 'Free' 
+    price: '$1.50' 
   },
 };
 

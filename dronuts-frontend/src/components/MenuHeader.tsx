@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import logo from "../assets/Dronut.png";
 import { TextField, IconButton } from "@mui/material";
@@ -16,26 +16,28 @@ function MenuHeader(props: MenuHeaderProps) {
 
   return (
     <div className="Header">
-      <div className="address">
-        <EditIcon className="editIcon" />
-        <div>
-          <TextField
-            hiddenLabel
-            variant="standard"
-            value={tmpAddress}
-            placeholder="Enter Delivery Addresss"
-            onChange={(event) => {
-              setTmpAddress(event.target.value);
-            }}
-          />
+      {false && (
+        <div className="address">
+          <EditIcon className="editIcon" />
+          <div>
+            <TextField
+              hiddenLabel
+              variant="standard"
+              value={tmpAddress}
+              placeholder="Enter Delivery Addresss"
+              onChange={(event) => {
+                setTmpAddress(event.target.value);
+              }}
+            />
+          </div>
+          <IconButton
+            className="iconButton"
+            onClick={() => setAddress(tmpAddress)}
+          >
+            <CheckIcon className="icon" />
+          </IconButton>
         </div>
-        <IconButton
-          className="iconButton"
-          onClick={() => setAddress(tmpAddress)}
-        >
-          <CheckIcon className="icon" />
-        </IconButton>
-      </div>
+      )}
       <img className="logo" src={logo} />
     </div>
   );

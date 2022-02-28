@@ -92,17 +92,19 @@ function App() {
             </div>
           </div>
           <div className="cartFooter">
-            <div className="delivery">
-              {address ? (
-                <Typography variant="body1">
-                  ETA to {address}: {deliveryTime} Minutes
-                </Typography>
-              ) : (
-                <Typography variant="body1">
-                  Enter an address for an ETA
-                </Typography>
-              )}
-            </div>
+            {false && (
+              <div className="delivery">
+                {address ? (
+                  <Typography variant="body1">
+                    ETA to {address}: {deliveryTime} Minutes
+                  </Typography>
+                ) : (
+                  <Typography variant="body1">
+                    Enter an address for an ETA
+                  </Typography>
+                )}
+              </div>
+            )}
             <div className="cartRow">
               <Typography variant="body1">Delivery</Typography>
               <div className="dash" />
@@ -115,7 +117,7 @@ function App() {
                 {formatter.format(calculateTotal() + 1.5)}
               </Typography>
             </div>
-            {Object.keys(cart).length > 0 && address && (
+            {Object.keys(cart).length > 0 && (
               <div className="checkout">
                 <Link to="/order" state={{ cart: cart, address: address }}>
                   <Button variant="contained">Continue to Checkout</Button>

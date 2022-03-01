@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {persistOrder, getOrders} = require('./order_routes');
 const {updateOrderStatus} = require('./order_status_routes');
+const {order_status_status} = require('./../enums');
 
 const app = express();
 const port = 3000;
@@ -21,9 +22,10 @@ app.get('/order', (request, response) => {
 app.patch('/orderstatus', (request, response) => {
     if (!order_status_status.includes(request.body.status)) {
         response.status(400).send('Bad Request: invalid order status');
+    } else {
+        updateOrderStatus(request.body.orderId, request.body.status);
+        response.status(200).send('OrderStatus updated');
     }
-    updateOrderStatus(request.body.orderId, request.body.status);
-    response.status(200).send('OrderStatus updated');
 });
 
 app.listen(port, hostname, () => {

@@ -1,7 +1,6 @@
 const {app} = require('../../src/endpoints/routes');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const expect = require('chai').expect;
 const assert = require('chai').assert;
 
 chai.use(chaiHttp);

@@ -20,19 +20,17 @@ import Review from '../components/Review';
 import Header from "../components/Header";
 import "./Order.css";
 import { useLocation } from 'react-router-dom'
+import axios from 'axios';
 
 function App() {
   const location = useLocation();
   const { cart, address } = location.state;
-
-  // console.log(cart);
-  // console.log(address);
  
   function Copyright() {
     return (
       <Typography variant="body2" color="text.secondary" align="center">
         {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
+        <Link color="inherit" to="/menu">
           Dronuts
         </Link>{' '}
         {new Date().getFullYear()}
@@ -78,7 +76,7 @@ function App() {
       'address': '5000 Forbes Ave'};
 
       try {
-        const sendData = axios.post('/order', data).then((res) => (res.json()));
+        const sendData = axios.post('http://localhost:3001/order', data).then((res) => (res.json()));
       } catch (e) {
         console.error(e);
       }
@@ -125,7 +123,7 @@ function App() {
                     )}
                     <Button
                       variant="contained"
-                      onClick={activeStep === steps.length - 1 ? handleNext : handleSubmit}
+                      onClick={activeStep === steps.length - 1 ? handleSubmit : handleNext}
                       sx={{ mt: 3, ml: 1 }}
                     >
                       {activeStep === steps.length - 1 ? 'Place order' : 'Next'}

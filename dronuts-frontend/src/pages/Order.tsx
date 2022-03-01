@@ -21,15 +21,6 @@ import Header from "../components/Header";
 import "./Order.css";
 import { useLocation } from 'react-router-dom'
 
-// async function sendOrders() {
-//   try {
-//     const send = await post('/order').then((res) => (res.json()));
-//     setOrders(response);
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }
-
 function App() {
   const location = useLocation();
   const { cart, address } = location.state;
@@ -78,6 +69,20 @@ function App() {
     const handleBack = () => {
       setActiveStep(activeStep - 1);
     };
+
+    const handleSubmit = () => {
+      handleNext();
+
+      const data = {'customerId': 100*(Math.random()),
+      'items': cart,
+      'address': '5000 Forbes Ave'};
+
+      try {
+        const sendData = axios.post('/order', data).then((res) => (res.json()));
+      } catch (e) {
+        console.error(e);
+      }
+    };
   
     return (
       <ThemeProvider theme={theme}>
@@ -120,7 +125,7 @@ function App() {
                     )}
                     <Button
                       variant="contained"
-                      onClick={handleNext}
+                      onClick={activeStep === steps.length - 1 ? handleNext : handleSubmit}
                       sx={{ mt: 3, ml: 1 }}
                     >
                       {activeStep === steps.length - 1 ? 'Place order' : 'Next'}

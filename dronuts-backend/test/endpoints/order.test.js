@@ -12,7 +12,7 @@ describe('New Order', function() {
             'items': [
                 {'itemId': 1, 'quantity': 2},
                 {'itemId': 6, 'quantity': 8},
-                {'itemId': 11, 'quantity': 2},
+                {'itemId': 10, 'quantity': 2},
             ],
             'address': '5032 Forbes Ave.'};
         const postRequest = chai.request(app).post('/order').send(data);

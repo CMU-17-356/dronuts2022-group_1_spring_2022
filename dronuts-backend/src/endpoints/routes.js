@@ -19,7 +19,9 @@ app.get('/order', (request, response) => {
 });
 
 app.patch('/orderstatus', (request, response) => {
-    // Validate Status
+    if (!order_status_status.includes(request.body.status)) {
+        response.status(400).send('Bad Request: invalid order status');
+    }
     updateOrderStatus(request.body.orderId, request.body.status);
     response.status(200).send('OrderStatus updated');
 });

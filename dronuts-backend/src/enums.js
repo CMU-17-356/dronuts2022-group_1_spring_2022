@@ -1,2 +1,2 @@
-exports.order_status_status = ['Pending', 'Packing', 'InFlight', 'Complete'];
+exports.orderStatusStatus = ['Pending', 'Packing', 'InFlight', 'Complete'];
 

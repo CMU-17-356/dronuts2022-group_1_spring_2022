@@ -17,6 +17,7 @@ async function persistOrder(requestBody) {
             });
             persistOrderStatus(orderId);
         } catch (error) {
+            console.error(error);
             throw err;
         }
     });

@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {persistOrder, getOrders} = require('./order_routes');
 const {startDatabase} = require('../db/db');
+const {updateOrderStatus} = require('./order_status_routes');
+const {orderStatusStatus} = require('./../enums');
 const cors = require('cors')
 
 const app = express();

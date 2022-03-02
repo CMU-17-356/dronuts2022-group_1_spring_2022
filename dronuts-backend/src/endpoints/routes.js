@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {persistOrder, getOrders} = require('./order_routes');
 const {startDatabase} = require('../db/db');
+const cors = require('cors')
 
 const app = express();
 const port = 3001;
 const hostname = '127.0.0.1';
 
+app.use(cors);
 app.use(bodyParser.json());
 
 app.post('/order', async (request, response) => {

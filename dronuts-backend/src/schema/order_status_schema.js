@@ -1,4 +1,7 @@
 'use strict';
+
+const {orderStatusStatus} = require('../enums');
+
 const __importDefault = (this && this.__importDefault) || function(mod) {
     return (mod && mod.__esModule) ? mod : {'default': mod};
 };
@@ -10,7 +13,7 @@ const orderStatusSchema = new Schema({
     droneId: {type: Number, required: true},
     status: {
         type: String,
-        enum: ['Pending', 'Packing', 'InFlight', 'Complete'],
+        enum: orderStatusStatus,
         required: true,
     },
 });

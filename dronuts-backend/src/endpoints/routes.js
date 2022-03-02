@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {persistOrder, getOrders} = require('./order_routes');
+const {startDatabase} = require('../db/db');
+const cors = require('cors')
 
 const app = express();
 const port = 3001;

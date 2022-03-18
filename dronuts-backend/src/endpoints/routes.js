@@ -32,8 +32,8 @@ app.patch('/orderstatus', (request, response) => {
     }
 });
 
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+    console.log(`Server listening on localhost:${port}/`);
 });
 
 exports.app = app;

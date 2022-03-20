@@ -23,6 +23,10 @@ app.get('/order', (request, response) => {
     getOrders(response);
 });
 
+app.get('/donuts', (request, response) => {
+    getDonutInventory(response);
+})
+
 app.patch('/orderstatus', (request, response) => {
     if (!orderStatusStatus.includes(request.body.status)) {
         response.status(400).send('Bad Request: invalid order status');

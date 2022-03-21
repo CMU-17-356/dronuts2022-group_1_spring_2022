@@ -11,8 +11,8 @@ async function persistOrder(requestBody) {
         const createDateTime = new Date();
 
         requestBody.id = orderId;
-        requestBody.createDateTime = createDateTime;
-        
+        requestBody.timestamp = createDateTime;
+
         try {
             const new_order = new order_schema(requestBody);
             new_order.validate();

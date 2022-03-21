@@ -17,9 +17,9 @@ function Payload(props: PayloadProps) {
         <CardContent className="cardContent">
           <div className="info">
             <Typography variant="h6">Order #{id}</Typography>
-            {items.map((item) => {
+            {items.map((item, index) => {
               return (
-                <div className="cartRow" key={item.name}>
+                <div className="cartRow" key={index}>
                   <Typography variant="body1">
                     {item.name}
                   </Typography>

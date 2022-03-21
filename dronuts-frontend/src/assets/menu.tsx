@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import apple_krumb from "./donut_images/apple_krumb.jpg";
 import bavarian_kreme from "./donut_images/bavarian_kreme.jpg";
 import blueberry from "./donut_images/blueberry.jpg";
@@ -128,4 +131,6 @@ const menu = {
   },
 };
 
-export default menu;
+export function getMenuImage(name: string) {
+  return menu[name].pic;
+}

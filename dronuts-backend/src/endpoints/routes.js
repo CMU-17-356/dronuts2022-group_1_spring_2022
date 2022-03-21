@@ -27,6 +27,12 @@ app.get('/donuts', (request, response) => {
     getDonuts(response);
 });
 
+app.post('/donut', async (request, response) => {
+    await persistDonut(request.body);
+    response.status(200).send('Donut added to Inventory');
+});
+
+
 app.patch('/orderstatus', (request, response) => {
     if (!orderStatusStatus.includes(request.body.status)) {
         response.status(400).send('Bad Request: invalid order status');

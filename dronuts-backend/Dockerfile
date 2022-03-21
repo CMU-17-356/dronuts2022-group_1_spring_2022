@@ -1,4 +1,4 @@
-FROM node:alpine3.11
+FROM gcr.io/google-appengine/nodejs
 
 # Create an application directory
 RUN mkdir -p /app

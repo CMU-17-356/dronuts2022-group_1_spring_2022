@@ -20,6 +20,7 @@
   "homepage": "https://github.com/CMU-17-356/dronuts2022-group_1_spring_2022#readme",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
     "@types/mocha": "^9.1.0",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.17",

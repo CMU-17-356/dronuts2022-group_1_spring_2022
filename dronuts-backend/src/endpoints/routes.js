@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
 const {persistOrder, getOrders} = require('./order_routes');
 const {updateOrderStatus} = require('./order_status_routes');
 const {orderStatusStatus} = require('./../enums');
@@ -25,7 +25,7 @@ app.get('/order', (request, response) => {
 
 app.get('/donuts', (request, response) => {
     getDonuts(response);
-})
+});
 
 app.patch('/orderstatus', (request, response) => {
     if (!orderStatusStatus.includes(request.body.status)) {

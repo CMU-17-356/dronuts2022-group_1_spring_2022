@@ -8,7 +8,11 @@ async function persistOrder(requestBody) {
         const collection = client.db('dronuts').collection('Order');
         const num_orders = await collection.countDocuments();
         const orderId = num_orders + 1;
+        const createDateTime = new Date();
+
         requestBody.id = orderId;
+        requestBody.createDateTime = createDateTime;
+        
         try {
             const new_order = new order_schema(requestBody);
             new_order.validate();

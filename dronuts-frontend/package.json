@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "./node_modules/.bin/cypress open",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -43,6 +43,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.1",
-    "@types/material-ui": "^0.21.12"
+    "@types/material-ui": "^0.21.12",
+    "cypress": "^9.5.2"
   }
 }

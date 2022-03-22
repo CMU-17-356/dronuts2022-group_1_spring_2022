@@ -9,7 +9,6 @@ const {orderStatusStatus} = require('./../enums');
 
 const app = express();
 const port = 8080;
-const hostname = '127.0.0.1';
 
 app.use(cors());
 app.use(bodyParser.json());

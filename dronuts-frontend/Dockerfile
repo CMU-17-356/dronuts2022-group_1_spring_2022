@@ -13,6 +13,7 @@ COPY ./ ./
 
 # Install node packages
 RUN npm install
+RUN npm run prestart
 
 # run script to build react app
 RUN npm run build

@@ -20,10 +20,10 @@ function persistDonut(requestBody, response) {
         try {
             const new_donut = new store_item_schema(requestBody);
             new_donut.validate();
-            collection.insertOne(new_order, function() {
+            collection.insertOne(new_donut, function() {
                 client.close();
             });
-            response.status(200).send(new_order)
+            response.status(200).send(new_donut)
         } catch (error) {
             console.error(error);
             response.status(500).send(error);

@@ -22,111 +22,57 @@ import vanilla_frosted from "./donut_images/vanilla_frosted.jpg";
 
 const menu = {
   "Apple Krumb": {
-    name: "Apple Krumb",
-    price: 1.25,
-    classic: false,
     pic: apple_krumb,
   },
   "Bavarian Kreme": {
-    name: "Bavarian Kreme",
-    price: 1.25,
-    classic: false,
     pic: bavarian_kreme,
   },
   Blueberry: {
-    name: "Blueberry",
-    price: 1.0,
-    classic: true,
     pic: blueberry,
   },
   "Boston Kreme": {
-    name: "Boston Kreme",
-    price: 1.25,
-    classic: false,
     pic: boston_kreme,
   },
   "Chocolate Frosted": {
-    name: "Chocolate Frosted",
-    price: 1.0,
-    classic: true,
     pic: chocolate_frosted,
   },
   "Chocolate Glaze": {
-    name: "Chocolate Glaze",
-    price: 0.8,
-    classic: true,
     pic: chocolate_glaze,
   },
   "Chocolate Kreme": {
-    name: "Chocolate Kreme",
-    price: 1.25,
-    classic: false,
     pic: chocolate_kreme,
   },
   "Cinnamon Sugar": {
-    name: "Cinnamon Sugar",
-    price: 1.0,
-    classic: true,
     pic: cinnamon_sugar,
   },
   Coconut: {
-    name: "Coconut",
-    price: 1.25,
-    classic: false,
     pic: coconut,
   },
   Cruller: {
-    name: "Cruller",
-    price: 1.25,
-    classic: false,
     pic: cruller,
   },
   Jelly: {
-    name: "Jelly",
-    price: 1.25,
-    classic: true,
     pic: jelly,
   },
   "Marble Frosted": {
-    name: "Marble Frosted",
-    price: 1.5,
-    classic: false,
     pic: marble_frosted,
   },
   "Original Glaze": {
-    name: "Original Glaze",
-    price: 0.8,
-    classic: true,
     pic: original_glaze,
   },
   "Powdered Sugar": {
-    name: "Powdered Sugar",
-    price: 0.8,
-    classic: true,
     pic: powdered_sugar,
   },
   "Sour Cream": {
-    name: "Sour Cream",
-    price: 1.25,
-    classic: false,
     pic: sour_cream,
   },
   "Strawberry Frosted": {
-    name: "Strawberry Frosted",
-    price: 1.00,
-    classic: true,
     pic: strawberry_frosted,
   },
   "Vanilla Frosted": {
-    name: "Vanilla Frosted",
-    price: 1.00,
-    classic: true,
     pic: vanilla_frosted,
   },
   "Old Fashioned": {
-    name: "Old Fashioned",
-    price: 0.8,
-    classic: true,
     pic: old_fashioned,
   },
 };

@@ -14,7 +14,7 @@ COPY . /app
 # Install node packages
 RUN npm install
 
-EXPOSE 3001
+EXPOSE 8080
 
 # run script to compile ts files
 RUN tsc -p .

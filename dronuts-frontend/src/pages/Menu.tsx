@@ -71,7 +71,7 @@ function App() {
         <div className="sidebar">
           <div>
             <Typography variant="h5">Shopping Cart</Typography>
-            <div className="cartContainer">
+            <div className="cartContainer" id="cartContainer">
               {Object.keys(cart).map((key, i) => {
                 const quantity = Object.values(cart)[i];
                 if (quantity > 0)

@@ -46,12 +46,14 @@ function MenuItem(props: MenuItemProps) {
             <div className="quantityRow">
               <IconButton
                 className="iconButton"
+                id={`add${name.replace( /\s/g, '')}`}
                 onClick={() => handleChange(quantity + 1)}
               >
                 <AddCircleIcon className="icon" />
               </IconButton>
               <IconButton
                 className="iconButton"
+                id={`sub${name.replace( /\s/g, '')}`}
                 onClick={() => handleChange(quantity - 1)}
               >
                 <RemoveCircleIcon className="icon" />

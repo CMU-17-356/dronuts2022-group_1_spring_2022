@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
@@ -21,14 +24,15 @@ export default function Review() {
         Order summary
       </Typography>
       <List disablePadding>
-        {Object.keys(orderSummary).map((key) => {
-            const product = orderSummary[key as keyof typeof orderSummary];
-            return (
-              <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-                <ListItemText primary={product.name} />
-                <Typography variant="body2">{product.price}</Typography>
-              </ListItem>
-            );
+        {Object.keys(cart).map((key, i) => {
+            const quantity = Object.values(cart)[i];
+            if (quantity > 0)
+              return (
+                <ListItem key={key} sx={{ py: 1, px: 0 }}>
+                  <ListItemText primary={key} />
+                  <Typography variant="body2">{quantity} x {formatter.format(Menu[key].price)}</Typography>
+                </ListItem>
+              );
           })}
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />

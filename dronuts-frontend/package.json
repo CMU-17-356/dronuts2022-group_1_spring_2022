@@ -2,7 +2,7 @@
   "name": "dronuts-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:3001/",
+  "proxy": "https://dronuts-backend-344601.ue.r.appspot.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
@@ -18,10 +18,23 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.1",
+    "@types/material-ui": "^0.21.12",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.1",
+    "@types/material-ui": "^0.21.12",
+    "cypress": "^9.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "prestart": "npm install -g serve",
+    "start": "serve -s build",
+    "local": "react-scripts start",
     "build": "react-scripts build",
     "test": "./node_modules/.bin/cypress open",
     "eject": "react-scripts eject"
@@ -39,11 +52,6 @@
     ]
   },
   "devDependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@mui/icons-material": "^5.4.2",
-    "@mui/material": "^5.4.1",
-    "@types/material-ui": "^0.21.12",
-    "cypress": "^9.5.2"
+
   }
 }

@@ -1,9 +1,20 @@
 version: '3'
 services:
-
-  your_app:
-    container_name: your_app
-    build: ./
+  dronuts-frontend:
+    build: dronuts-frontend
+    image: frontend:latest
+    # environment:
+    #   PORT: 3000
     ports:
-      - "80:80"
-    restart: always
+      - "3000:3000"
+    depends_on:
+      - dronuts-backend
+  dronuts-backend:
+    build: dronuts-backend
+    image: backend:latest
+    # environment:
+    #   PORT: 3001
+    expose:
+      - 3001
+    ports:
+      - "3001:3001"

@@ -28,7 +28,7 @@ app.get('/donuts', (request, response) => {
 });
 
 app.post('/donut', async (request, response) => {
-    await persistDonut(request.body, response);
+    persistDonut(request.body, response);
 });
 
 

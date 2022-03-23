@@ -14,4 +14,20 @@ describe('Donuts', function() {
             done();
         });
     });
+
+    it('the POST /donut endpoint should add a new donut to the inventory', function(done) {
+        const data = 
+        {
+            "id" : 9999999999,
+            "name" : "Test Donut",
+            "price" : 1.30,
+            "current_stock": 92
+        }
+        const postRequest = chai.request(app).post('/donut').send(data);
+
+        postRequest.end((err, res) => {
+            assert(res.statusCode == 200);
+            done();
+        });
+    });
 });

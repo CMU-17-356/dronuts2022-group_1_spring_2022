@@ -9,8 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 import orderSummary from '../assets/orderSummary';
 
-// const location = useLocation();
-// const { cart, address } = location.state;
 const addresses = ['5000 Forbes Ave', 'Pittsburgh', 'PA', '15213', 'USA'];
 const payments = [
   { name: 'Card type', detail: 'Visa' },
@@ -28,7 +26,6 @@ export default function Review() {
       <List disablePadding>
         {Object.keys(cart).map((key, i) => {
             const quantity = Object.values(cart)[i];
-            // const product = orderSummary[key as keyof typeof orderSummary];
             if (quantity > 0)
               return (
                 <ListItem key={key} sx={{ py: 1, px: 0 }}>
@@ -36,25 +33,7 @@ export default function Review() {
                   <Typography variant="body2">{quantity} x {formatter.format(Menu[key].price)}</Typography>
                 </ListItem>
               );
-              // return (
-              //   <div className="cartRow" key={key}>
-              //     <Typography variant="body1">{key}</Typography>
-              //     <div className="dash" />
-              //     <Typography variant="body1">
-              //       {quantity} x {formatter.format(Menu[key].price)}
-              //     </Typography>
-              //   </div>
-              // );
           })}
-        {/* {Object.keys(orderSummary).map((key) => {
-            const product = orderSummary[key as keyof typeof orderSummary];
-            return (
-              <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-                <ListItemText primary={product.name} />
-                <Typography variant="body2">{product.price}</Typography>
-              </ListItem>
-            );
-          })} */}
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>

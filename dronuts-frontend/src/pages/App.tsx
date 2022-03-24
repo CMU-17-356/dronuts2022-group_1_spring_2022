@@ -19,7 +19,7 @@ function App() {
           <Link to="/employee">Employee</Link>
         </p>
         <p>
-          <Link to="/addDonut">Employee Add Donut</Link>
+          <Link to="/addDonuts">Employee Add Donut</Link>
         </p>
       </header>
     </div>

@@ -77,6 +77,10 @@ const menu = {
   },
 };
 
-export function getMenuImage(name: string) {
-  return menu[name].pic;
+export default function getMenuImage(name: string) {
+  try {
+    return menu[name].pic;
+  } catch {
+    return menu["Original Glaze"].pic;
+  }
 }

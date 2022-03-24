@@ -161,9 +161,10 @@ function App() {
       'address': '5000 Forbes Ave'};
 
       console.log(JSON.stringify(data));
+      console.log(activeStep);
 
       try {
-        const sendData = axios.post('http://localhost:3001/order', data).then((res) => (res.json()));
+        const sendData = axios.post('http://localhost:8080/order', data).then((res) => (res.json()));
       } catch (e) {
         console.error(e);
       }

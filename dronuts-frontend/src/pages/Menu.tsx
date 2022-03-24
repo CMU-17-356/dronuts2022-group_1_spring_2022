@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuItem from "../components/MenuItem";
 import { Typography, Button } from "@mui/material";
-import { getMenuImage } from "../assets/menu";
+import getMenuImage from "../assets/menu";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
@@ -27,7 +27,7 @@ function App() {
 
   async function fetchMenu() {
     try {
-      const response = await fetch("/donuts").then((res) => res.json());
+      const response = await fetch("https://dronuts-backend-344601.ue.r.appspot.com/donuts").then((res) => res.json());
       setMenu(response);
     } catch (e) {
       console.error(e);

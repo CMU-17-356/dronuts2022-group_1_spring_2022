@@ -25,7 +25,7 @@ function App() {
 
   async function fetchMenu() {
     try {
-      const response = await fetch("/donuts").then((res) => res.json());
+      const response = await fetch("https://dronuts-backend-344601.ue.r.appspot.com/donuts").then((res) => res.json());
       setMenu(response);
     } catch (e) {
       console.error(e);

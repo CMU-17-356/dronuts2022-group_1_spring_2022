@@ -1,27 +1,62 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuItem from "../components/MenuItem";
 import { Typography, Button } from "@mui/material";
-import Menu from "../assets/menu";
+import { getMenuImage } from "../assets/menu";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
+interface CartItem {
+  itemId: number;
+  quantity: number;
+}
+
+interface MenuItem {
+  id: number;
+  name: string;
+  price: number;
+  classic: boolean;
+}
+
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<Array<CartItem>>([]);
+  const [menu, setMenu] = useState<Array<MenuItem>>([]);
+
+  async function fetchMenu() {
+    try {
+      const response = await fetch("/donuts").then((res) => res.json());
+      setMenu(response);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
+  function getName(itemId: number) {
+    const item = menu.filter((item) => item.id == itemId)[0];
+    return item.name;
+  }
+
+  function getPrice(itemId: number) {
+    const item = menu.filter((item) => item.id == itemId)[0];
+    return item.price;
+  }
+
   function calculateTotal() {
     let total = 0;
-    Object.keys(cart).map((key, i) => {
-      const quantity = Object.values(cart)[i];
-      total += quantity * Menu[key].price;
+    cart.map((item: CartItem) => {
+      total += getPrice(item.itemId) * item.quantity;
     });
     return total;
   }
@@ -34,14 +69,14 @@ function App() {
           <Typography variant="h4" className="menuHeader">
             Classic Donuts
           </Typography>
-          {Object.keys(Menu).map((key) => {
-            const item = Menu[key];
+          {menu.map((item: MenuItem) => {
             if (item.classic) {
               return (
                 <MenuItem
+                  itemId={item.id}
                   name={item.name}
                   price={item.price}
-                  image={item.pic}
+                  image={getMenuImage(item.name)}
                   cart={cart}
                   setCart={setCart}
                   key={item.name}
@@ -52,14 +87,14 @@ function App() {
           <Typography variant="h4" className="menuHeader">
             Specialty Donuts
           </Typography>
-          {Object.keys(Menu).map((key) => {
-            const item = Menu[key];
+          {menu.map((item: MenuItem) => {
             if (!item.classic) {
               return (
                 <MenuItem
+                  itemId={item.id}
                   name={item.name}
                   price={item.price}
-                  image={item.pic}
+                  image={getMenuImage(item.name)}
                   cart={cart}
                   setCart={setCart}
                   key={item.name}
@@ -72,18 +107,21 @@ function App() {
           <div>
             <Typography variant="h5">Shopping Cart</Typography>
             <div className="cartContainer" id="cartContainer">
-              {Object.keys(cart).map((key, i) => {
-                const quantity = Object.values(cart)[i];
-                if (quantity > 0)
+              {cart.map((item: CartItem) => {
+                if (item.quantity > 0) {
                   return (
-                    <div className="cartRow" key={key}>
-                      <Typography variant="body1">{key}</Typography>
+                    <div className="cartRow" key={item.itemId}>
+                      <Typography variant="body1">
+                        {getName(item.itemId)}
+                      </Typography>
                       <div className="dash" />
                       <Typography variant="body1">
-                        {quantity} x {formatter.format(Menu[key].price)}
+                        {item.quantity} x{" "}
+                        {formatter.format(getPrice(item.itemId))}
                       </Typography>
                     </div>
                   );
+                }
               })}
             </div>
           </div>
@@ -100,7 +138,7 @@ function App() {
                 {formatter.format(calculateTotal() + 1.5)}
               </Typography>
             </div>
-            {Object.keys(cart).length > 0 && (
+            {cart.length > 0 && (
               <div className="checkout">
                 <Link to="/order" state={{ cart: cart }}>
                   <Button variant="contained">Continue to Checkout</Button>

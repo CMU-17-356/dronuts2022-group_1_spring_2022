@@ -160,6 +160,8 @@ function App() {
       'items': cart,
       'address': '5000 Forbes Ave'};
 
+      console.log(JSON.stringify(data));
+
       try {
         const sendData = axios.post('http://localhost:3001/order', data).then((res) => (res.json()));
       } catch (e) {

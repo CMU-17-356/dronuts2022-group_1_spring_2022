@@ -12,12 +12,16 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from '../components/AddressForm';
 import TimeEstimate from '../components/TimeEstimate';
 import PaymentForm from '../components/PaymentForm';
-import Review from '../components/Review';
 import Header from "../components/Header";
+import Menu from "../assets/menu";
 import "./Order.css";
 import { useLocation } from 'react-router-dom'
 import axios from 'axios';
@@ -25,6 +29,30 @@ import axios from 'axios';
 function App() {
   const location = useLocation();
   const { cart, address } = location.state;
+
+  const orderSummary = cart;
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  function calculateTotal() {
+    let total = 0;
+    Object.keys(cart).map((key, i) => {
+      const quantity = Object.values(cart)[i];
+      total += quantity * Menu[key].price;
+    });
+    return total;
+  }
+
+  const addresses = ['5000 Forbes Ave', 'Pittsburgh', 'PA', '15213', 'USA'];
+  const payments = [
+    { name: 'Card type', detail: 'Visa' },
+    { name: 'Card holder', detail: 'Michael Hilton' },
+    { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+    { name: 'Expiry date', detail: '04/2024' },
+  ];
  
   function Copyright() {
     return (
@@ -50,7 +78,64 @@ function App() {
       case 2:
         return <PaymentForm />;
       case 3:
-        return <Review />;
+        return (
+          <React.Fragment>
+            <Typography variant="h6" gutterBottom>
+              Order summary
+            </Typography>
+            <List disablePadding>
+              {Object.keys(orderSummary).map((key, i) => {
+                  const quantity = Object.values(cart)[i];
+                  return (
+                    <ListItem key={key} sx={{ py: 1, px: 0 }}>
+                      <ListItemText primary={key} />
+                      <Typography variant="body2">
+                        {quantity} x {formatter.format(Menu[key].price)}
+                      </Typography>
+                    </ListItem>
+                  );
+                })}
+              <ListItem sx={{ py: 1, px: 0 }}>
+                <ListItemText primary="Delivery" />
+                <Typography variant="body2">
+                  {formatter.format(1.5)}
+                </Typography>
+              </ListItem>
+              <ListItem sx={{ py: 1, px: 0 }}>
+                <ListItemText primary="Total" />
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  {formatter.format(calculateTotal() + 1.5)}
+                </Typography>
+              </ListItem>
+            </List>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Delivery
+                </Typography>
+                <Typography gutterBottom>Michael Hilton</Typography>
+                <Typography gutterBottom>{addresses.join(', ')}</Typography>
+              </Grid>
+              <Grid item container direction="column" xs={12} sm={6}>
+                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                  Payment details
+                </Typography>
+                <Grid container>
+                  {payments.map((payment) => (
+                    <React.Fragment key={payment.name}>
+                      <Grid item xs={6}>
+                        <Typography gutterBottom>{payment.name}</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography gutterBottom>{payment.detail}</Typography>
+                      </Grid>
+                    </React.Fragment>
+                  ))}
+                </Grid>
+              </Grid>
+            </Grid>
+          </React.Fragment>
+        );
       default:
         throw new Error('Unknown step');
     }
@@ -71,7 +156,7 @@ function App() {
     const handleSubmit = () => {
       handleNext();
 
-      const data = {'customerId': 100*(Math.random()),
+      const data = {'customerId': Math.round(100*(Math.random())),
       'items': cart,
       'address': '5000 Forbes Ave'};
 
@@ -109,7 +194,7 @@ function App() {
                     Thank you for your order.
                   </Typography>
                   <Typography variant="subtitle1">
-                    Your order number is #2001539. We have emailed your order
+                    Your order number is #53. We have emailed your order
                     confirmation, and your order should arrive to 5000 Forbes Ave, 
                     Pittsburgh, PA 15213, USA in 15-20 minutes.
                   </Typography>

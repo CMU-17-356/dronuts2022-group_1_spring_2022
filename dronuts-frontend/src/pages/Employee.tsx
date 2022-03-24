@@ -34,7 +34,7 @@ function App() {
 
   async function fetchOrders() {
     try {
-      const response = await fetch("/order").then((res) => res.json());
+      const response = await fetch('https://dronuts-backend-344601.ue.r.appspot.com/order').then((res) => (res.json()));
       setOrders(response);
     } catch (e) {
       console.error(e);

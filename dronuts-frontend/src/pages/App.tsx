@@ -7,19 +7,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          <Link to="/menu">Menu</Link>
+          <Link to="/menu">Customer Menu</Link>
         </p>
         <p>
-          <Link to="/cart">Cart</Link>
+          <Link to="/employee">Employee Payloads</Link>
         </p>
         <p>
-          <Link to="/order">Order</Link>
-        </p>
-        <p>
-          <Link to="/employee">Employee</Link>
-        </p>
-        <p>
-          <Link to="/addDonuts">Employee Add Donut</Link>
+          <Link to="/addDonuts">Employee Add Shop Item</Link>
         </p>
       </header>
     </div>

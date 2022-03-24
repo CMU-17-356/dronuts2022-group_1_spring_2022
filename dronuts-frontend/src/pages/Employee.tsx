@@ -51,7 +51,7 @@ function App() {
 
   async function fetchStatuses() {
     try {
-      const response = await fetch("http://localhost:8080/orderstatuses").then((res) => res.json());
+      const response = await fetch("https://dronuts-backend-344601.ue.r.appspot.com/orderstatuses").then((res) => res.json());
       setStatuses(response);
     } catch (e) {
       console.error(e);

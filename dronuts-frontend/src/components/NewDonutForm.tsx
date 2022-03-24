@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -5,12 +8,28 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {Button} from "@mui/material";
+import axios from 'axios';
 
 export default function NewDonutForm() {
   const [id, setId] = React.useState(-1);
   const [name, setName] = React.useState('');
   const [price, setPrice] = React.useState(-1.0);
   const [stock, setStock] = React.useState(-1);
+
+  const handleSubmit = () => {
+
+    const data = {'id': id,
+      'name': name,
+      'price': price,
+      'current_stock': stock
+    };
+
+    try {
+      const sendData = axios.post('https://dronuts-backend-344601.ue.r.appspot.com/donut', data).then((res) => (res.json()));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -72,7 +91,7 @@ export default function NewDonutForm() {
         {
           id > 0 && name != '' && price > 0.0 && stock > 0 && (
             <Grid item xs={12}>
-              <Button variant="contained">Post Item</Button>
+              <Button variant="contained" onClick={handleSubmit}>Post Item</Button>
             </Grid>
           )
         }

@@ -161,9 +161,14 @@ function App() {
       'address': '5000 Forbes Ave'};
 
       console.log(JSON.stringify(data));
+      console.log(activeStep);
 
       try {
+<<<<<<< HEAD
         const sendData = axios.post('https://dronuts-backend-344601.ue.r.appspot.com/order', data).then((res) => (res.json()));
+=======
+        const sendData = axios.post('http://localhost:8080/order', data).then((res) => (res.json()));
+>>>>>>> 246c2ac553525acf5d8ca03b8a63497a9ff200c7
       } catch (e) {
         console.error(e);
       }

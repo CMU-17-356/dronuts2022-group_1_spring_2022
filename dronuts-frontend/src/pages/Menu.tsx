@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuItem from "../components/MenuItem";
 import { Typography, Button } from "@mui/material";
-import { getMenuImage } from "../assets/menu";
+import getMenuImage from "../assets/menu";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 

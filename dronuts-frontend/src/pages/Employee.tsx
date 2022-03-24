@@ -18,10 +18,18 @@ interface MenuItem {
   classic: boolean;
 }
 
+interface OrderStatus {
+  orderId: number;
+  drontId: number;
+  status: string;
+}
+
 function App() {
   const [orders, setOrders] = useState<Array<Order>>([]);
 
   const [menu, setMenu] = useState<Array<MenuItem>>([]);
+
+  const [statuses, setStatuses] = useState<Array<OrderStatus>>([]);
 
   async function fetchMenu() {
     try {
@@ -41,9 +49,19 @@ function App() {
     }
   }
 
+  async function fetchStatuses() {
+    try {
+      const response = await fetch("http://localhost:8080/orderstatuses").then((res) => res.json());
+      setStatuses(response);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   useEffect(() => {
     fetchMenu();
     fetchOrders();
+    fetchStatuses();
   }, []);
 
   function getName(itemId: number) {
@@ -64,6 +82,15 @@ function App() {
     });
   }
 
+  function getStatus(orderId: number) {
+    const status = statuses.filter((item) => item.orderId == orderId)[0];
+    if (status) {
+      return status.status;
+    } else {
+      return "Pending"
+    }
+  }
+
   const droneCount = 6;
 
   return (
@@ -75,12 +102,16 @@ function App() {
             Payloads
           </Typography>
           {orders.map((object, index) => {
+            const status = getStatus(object.id);
             return (
               <Payload
                 key={index}
                 id={object.id}
+                status={status}
                 droneId={(index % droneCount) + 1}
                 items={getItems(object.items)}
+                statuses={statuses}
+                setStatuses={setStatuses}
               />
             );
           })}

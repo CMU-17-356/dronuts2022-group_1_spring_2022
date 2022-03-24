@@ -18,6 +18,9 @@ function App() {
         <p>
           <Link to="/employee">Employee</Link>
         </p>
+        <p>
+          <Link to="/addDonut">Employee Add Donut</Link>
+        </p>
       </header>
     </div>
   );

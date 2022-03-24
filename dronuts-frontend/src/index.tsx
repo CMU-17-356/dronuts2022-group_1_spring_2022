@@ -11,6 +11,7 @@ import CartPage from './pages/Cart';
 import MenuPage from './pages/Menu';
 import OrderPage from './pages/Order';
 import EmployeePage from './pages/Employee'
+import AddDonutPage from './pages/AddDonut'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="cart" element={<CartPage />} />
       <Route path="order" element={<OrderPage />} />
       <Route path="employee" element={<EmployeePage />} />
+      <Route path="addDonuts" element={<AddDonutPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

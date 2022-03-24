@@ -4,7 +4,7 @@ const cors = require('cors');
 const {persistOrder, getOrders} = require('./order_routes');
 const {updateOrderStatus} = require('./order_status_routes');
 const {orderStatusStatus} = require('./../enums');
-const {getDonuts} = require('./donut_routes');
+const {persistDonut, getDonuts} = require('./donut_routes');
 
 
 const app = express();
@@ -25,6 +25,11 @@ app.get('/order', (request, response) => {
 app.get('/donuts', (request, response) => {
     getDonuts(response);
 });
+
+app.post('/donut', async (request, response) => {
+    persistDonut(request.body, response);
+});
+
 
 app.patch('/orderstatus', (request, response) => {
     if (!orderStatusStatus.includes(request.body.status)) {

@@ -1,6 +1,6 @@
 const {startDatabase} = require('../db/db');
 const {default: order_schema} = require('../schema/order_schema');
-const {persistOrderStatus} = require('./order_status_routes');
+const {default: order_status_schema} = require('../schema/order_status_schema');
 
 async function persistOrder(requestBody) {
     const client = startDatabase();
@@ -8,20 +8,28 @@ async function persistOrder(requestBody) {
         const collection = client.db('dronuts').collection('Order');
         const num_orders = await collection.countDocuments();
         const orderId = num_orders + 1;
-        const timestamp = new Date();
+        const timestamp = Date.now();
 
         requestBody.id = orderId;
-        requestBody.timestamp = timestamp;
+        requestBody.timeStamp = timestamp;
+
+        console.log(requestBody);
         try {
             const new_order = new order_schema(requestBody);
             new_order.validate();
-            collection.insertOne(new_order, function() {
-                client.close();
-            });
-            persistOrderStatus(orderId);
+            collection.insertOne(new_order); 
         } catch (error) {
             console.error(error);
             throw err;
+        } finally {
+            const droneId = Math.floor(Math.random() * 6) + 1;
+            order_status = {orderId: orderId, droneId: droneId, status: 'Pending'}
+            const new_order_status = new order_status_schema(order_status);
+            new_order_status.validate()
+            const status_collection = client.db('dronuts').collection('Order_Status');
+            status_collection.insertOne(new_order_status, function() {
+                client.close();
+            });
         }
     });
 }

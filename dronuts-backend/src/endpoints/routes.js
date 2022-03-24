@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const {persistOrder, getOrders} = require('./order_routes');
-const {updateOrderStatus} = require('./order_status_routes');
+const {updateOrderStatus, getOrderStatuses} = require('./order_status_routes');
 const {orderStatusStatus} = require('./../enums');
 const {persistDonut, getDonuts} = require('./donut_routes');
 
@@ -24,6 +24,10 @@ app.get('/order', (request, response) => {
 
 app.get('/donuts', (request, response) => {
     getDonuts(response);
+});
+
+app.get('/orderstatuses', (request, response) => {
+    getOrderStatuses(response);
 });
 
 app.post('/donut', async (request, response) => {

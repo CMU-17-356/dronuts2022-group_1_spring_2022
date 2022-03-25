@@ -25,7 +25,7 @@ export default function NewDonutForm() {
     };
 
     try {
-      const sendData = axios.post('https://dronuts-backend-344601.ue.r.appspot.com/donut', data).then((res) => (res.json()));
+      const sendData = axios.post('https://dronuts-backend-344601.ue.r.appspot.com/donut', data);
     } catch (e) {
       console.error(e);
     }
@@ -34,14 +34,14 @@ export default function NewDonutForm() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Post New Shop Item
+        Post New Shop Item (Post Button only shows up if valid info is filled)
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
             required
             id="itemId"
-            label="Item ID"
+            label="Item ID (Integer)"
             fullWidth
             variant="standard"
             type="number"
@@ -66,7 +66,7 @@ export default function NewDonutForm() {
           <TextField
             required
             id="price"
-            label="Item Price"
+            label="Item Price (Float)"
             fullWidth
             variant="standard"
             type="number"

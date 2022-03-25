@@ -208,7 +208,6 @@ function App() {
       console.log(JSON.stringify(data));
       const sendData = axios
         .post("https://dronuts-backend-344601.ue.r.appspot.com/order", data)
-        .then((res) => res.json());
       console.log(sendData);
     } catch (e) {
       console.error(e);

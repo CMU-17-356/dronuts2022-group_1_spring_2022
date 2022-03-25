@@ -1,5 +1,9 @@
 # dronut
 
+### Deployed App
+* [Frontend](https://dronuts-frontend-344601.ue.r.appspot.com)
+* [Backend](https://dronuts-backend-344601.ue.r.appspot.com)
+
 ### Web Framework
 We've decided to use <b>Express</b> as our web framework, for these reasons:
 
